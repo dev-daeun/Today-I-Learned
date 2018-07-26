@@ -169,7 +169,6 @@ listen('click', function (e){
 ```
 
 
-We’ve got a chain of three functions nested together, each one representing a step in an asynchronous series.
 3개의 함수가 중첩된 걸 볼 수 있습니다. 각각의 함수는 비동기 순서의 한 단계를 나타냅니다. 이러한 코드를 '콜백지옥'이라고 부르기도 합니다. 콜백지옥은 중첩되는 들여쓰기보다 더 큰 문제를 가지고 있습니다.
 첫번째로, 우리는 클릭 이벤트를 기다리고, 타이머가 동작하기를 기다리고, 그 다음에 ajax가 응답하기를 기다립니다. 그리고 이러한 순서는 클릭이벤트가 발생할 때마다 반복됩니다. 이 코드는 다음과 같이 단계를 밟아갈 때 비동기성을 더 자연스럽게 보여줍니다.
 
