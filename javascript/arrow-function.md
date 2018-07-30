@@ -1,7 +1,7 @@
 # TIL : Arrow function
 
 ## 문법
-[pg-promise](https://github.com/vitaly-t/pg-promise)의 [Performance Boost](https://github.com/vitaly-t/pg-promise/wiki/Performance-Boost) 문서를 참고하여 1개의 insert 명령어가 여러개의 row 삽입을 수행할 수 있도록 고민하고 있었습니다. 명령어에 들어갈 row들을 sql 문법에 맞게 포맷팅하기 위해 ParameterInsert라는 클래스를 만들었습니다. (문서에서는 ES5의 생성자 함수를 이용했지만 저는 ES6에서 제공하는 클래스를 이용했습니다. ES5의 생성자 함수, 프로토타입 객체, 상속 그리고 ES6의 클래스는 '여기'에서 다루겠습니다.) 아래의 코드는 ES6 클래스와 화살표 함수(Arrow function)을 활용한 예입니다.
+[pg-promise](https://github.com/vitaly-t/pg-promise)의 [Performance Boost](https://github.com/vitaly-t/pg-promise/wiki/Performance-Boost) 문서를 참고하여 1개의 insert 명령어가 여러개의 row 삽입을 수행할 수 있도록 고민하고 있었습니다. 명령어에 들어갈 row들을 sql 문법에 맞게 포맷팅하기 위해 ParameterInsert라는 클래스를 만들었습니다. (문서에서는 ES5의 생성자 함수를 이용했지만 저는 ES6에서 제공하는 클래스를 이용했습니다. ES5의 생성자 함수, 프로토타입 객체, 상속 그리고 ES6의 클래스는 ['여기'](https://github.com/kde6260/Today-I-Learned/blob/master/javascript/class.md)에서 다루겠습니다.) 아래의 코드는 ES6 클래스와 화살표 함수(Arrow function)을 활용한 예입니다.
 
 ``` javascript
 class ParameterInsert{  
