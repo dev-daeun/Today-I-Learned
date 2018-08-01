@@ -1,0 +1,40 @@
+package DataStruct;
+
+import java.util.Scanner;
+import java.util.Stack;
+public class P9012 {
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        int T = Integer.parseInt(sc.nextLine());
+        Stack stack = new Stack();
+        String arr[] = new String[T];
+        String result[] = new String[T];
+
+        for(int i=0; i<T; i++) {
+            arr[i] = sc.nextLine();
+        }
+
+        for(int i=0; i<T; i++){
+            for(int j=0; j<arr[i].length(); j++){
+                if(arr[i].charAt(j)=='(')
+                    stack.push(new String("("));
+                else {
+                    if(!stack.isEmpty() && stack.peek().equals("("))
+                        stack.pop();
+                    else
+                        stack.push(new String(")"));
+                }
+            }
+            if(!stack.empty())
+                result[i] = "NO";
+            else
+                result[i] = "YES";
+
+            stack.clear();
+        }
+
+        for(int i=0; i<T; i++)
+            System.out.println(result[i]);
+
+    }
+}

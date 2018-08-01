@@ -1,0 +1,34 @@
+#include<iostream>
+#include<stdio.h>
+#include<string.h>
+using namespace std;
+
+int main(){
+    
+    const int NONE = 0;
+    const int LEFT = 1;
+    const int RIGHT = 2;
+    const int MOD = 9901;
+    int N;
+    cin >> N;
+
+    int **dp = new int*[N+1];
+    for(int i=0; i<=N; i++){
+        dp[i] = new int[3];
+        memset(dp[i], 0, sizeof(int)*3);
+    }
+    
+    dp[1][NONE] = 1;
+    dp[1][LEFT] = 1;
+    dp[1][RIGHT] = 1;
+
+    for(int i=2; i<=N; i++){
+        dp[i][NONE] = (dp[i-1][LEFT] + dp[i-1][RIGHT] + dp[i-1][NONE]) %  MOD;
+        dp[i][LEFT] = (dp[i-1][RIGHT] + dp[i-1][NONE]) % MOD;
+        dp[i][RIGHT] = (dp[i-1][LEFT] + dp[i-1][NONE]) % MOD;
+    }
+
+    cout << (dp[N][NONE]+dp[N][LEFT]+dp[N][RIGHT]) % MOD;
+    delete[] dp;
+    return 0;
+}

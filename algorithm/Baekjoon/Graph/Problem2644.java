@@ -1,0 +1,61 @@
+package Graph;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+
+public class Problem2644 {
+	
+	public static int n;
+	public static int totalEdge;
+	
+	public static void main(String [] args){
+		Scanner sc = new Scanner(System.in);
+		
+		//정점 갯수
+		n = sc.nextInt();
+		
+		// 촌수를 세야하는 두 정점의 번호
+		int p1 = sc.nextInt();
+		int p2 = sc.nextInt();
+	
+		//간선의 총 갯수
+		totalEdge = sc.nextInt();
+		int E[][] = new int[n+1][n+1];
+		
+		for(int i=1; i<=totalEdge; i++){
+			int parent = sc.nextInt();
+			int child = sc.nextInt();
+			E[parent][child] = E[child][parent] = 1;		
+		}
+		
+		boolean [] visited = new boolean[n+1];
+		int [] dp = new int[n+1];
+		Arrays.fill(dp, 0);
+		System.out.println(bfs(p1, p2, E, visited, dp));
+	}
+	
+	
+	public static int bfs(int p1, int p2, int [][] E, final boolean [] visited, final int[] dp){
+		Queue<Integer> q = new LinkedList<Integer>();
+		q.add(p1);
+		while(!q.isEmpty()){
+			int v = q.poll();
+			visited[v] = true;
+			if(v==p2)
+				break;
+			else{
+				for(int i=1; i<=n; i++){
+					if(E[v][i]==1 && !visited[i]){
+						dp[i] = dp[v]+1;
+						q.add(i);
+					}
+				}
+			}
+		}
+		return dp[p2] == 0 ? -1 : dp[p2];
+		
+	}
+}
