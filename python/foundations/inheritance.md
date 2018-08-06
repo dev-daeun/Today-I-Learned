@@ -143,8 +143,8 @@ class Batman(Superhero, Bat):
 
 ```
 * MRO(method resolution order) is a way of searching methods that was applied since Python version 2.3. When a class inherits single or 
-multiple, the sequence of what class would be accessed is saved in the class's '__mro__'. The more left it is in `__mro__`, the priorer it is.
-Suppose that a class 'D' inherits `B` and 'C' and 'B' and 'C' inherits `A`(called 'diamond inheritance'). `D`'s `__mro__` results in `B, C, A`,
+multiple, the sequence of what class would be accessed is saved in the class's `__mro__`. The more left it is in `__mro__`, the priorer it is.
+Suppose that a class `D` inherits `B` and `C`, which inherit `A`(called 'diamond inheritance'). `D`'s `__mro__` results in `B, C, A`,
 since parent class stands after its child classes. If `__mro__` does not result in any method after checking `object` class, it throws `AttributeError`. 
 
 ```python
