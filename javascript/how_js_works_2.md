@@ -136,7 +136,7 @@ ES6부터는 이벤트루프가 어떻게 동작해야 하는지 ES6가 직접 �
 
 ## ES6가 하는 일은 무엇인가 ?
 
-ES6에서는 '작업 큐'라는 새로운 개념이 등장합니다. 작업 큐는 이벤트루프의 맨 위에 위치한 계층입니다. Promise로 비동기를 처리할 때 가장 자주 접하게 될 것입니다. (Promise로 비동기를 처리하는 것은 비동기 행위들이 어떻게 스케줄링되고 처리되는지 알아보고 난 뒤에 'JS는 어떻게 동작하는가3'에서 다루도록 하겠습니다.)
+ES6에서는 '작업 큐'라는 새로운 개념이 등장합니다. 작업 큐는 이벤트루프의 맨 위에 위치한 계층입니다. Promise로 비동기를 처리할 때 가장 자주 접하게 될 것입니다. (Promise로 비동기를 처리하는 것은 비동기 행위들이 어떻게 스케줄링되고 처리되는지 알아보고 난 뒤에 ['JS는 어떻게 동작하는가3'](https://github.com/kde6260/Today-I-Learned/blob/master/javascript/how_js_works_3.md)에서 다루도록 하겠습니다.)
 
 작업 큐는 이벤트루프의 각각의 '틱(tick)' 끝에 위치한 큐입니다. 이벤트루프가 '틱'을 할 동안 일어나는 특정 비동기 행위들은 콜백 큐에 새로운 이벤트로서 삽입되는게 아니라, 가장 최근의 틱의 작업큐에 삽입됩니다.
 즉, 콜백 큐에 삽입되어있는 다른 어떠한 작업들보다 먼저 실행될 것이라는 확신을 가질 수 있습니다.
@@ -200,7 +200,7 @@ else if (text == "world") {
    doSomethingElse();
 }
 ```
-위와같은 순서로 비동기를 표현하는 게 훨씬 더 자연스러워보입니다. 위와 같은 방식으로 코드를 표현하기 위해 Promise를 적용합니다. Promise에 대해서는 'JS는 어떻게 동작하는가3'에서 다루겠습니다.
+위와같은 순서로 비동기를 표현하는 게 훨씬 더 자연스러워보입니다. 위와 같은 방식으로 코드를 표현하기 위해 Promise를 적용합니다. Promise에 대해서는 ['JS는 어떻게 동작하는가3'](https://github.com/kde6260/Today-I-Learned/blob/master/javascript/how_js_works_3.md)에서 다루겠습니다.
 
 ---------------------
 본 포스팅은 [Alexander Zlatkov의 글](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)을 번역, 의역하여 작성된 글입니다.
