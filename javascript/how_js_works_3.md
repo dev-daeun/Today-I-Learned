@@ -1,6 +1,6 @@
 
 
-# JS는 어떻게 동작하는가 - Promises & Async-Await
+# JS는 어떻게 동작하는가3 - Promises 
 
 아래의 코드를 봅시다.
 ```javascript
