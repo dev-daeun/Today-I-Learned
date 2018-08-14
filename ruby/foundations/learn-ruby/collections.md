@@ -49,3 +49,13 @@ Abe: grandpa
 Santa's Little Helper: dog
 =end
 ```
+* `Hash.new(디폴트 값)`처럼 `hash`에 디폴트 밸류를 지정할 수 있습니다. 
+```ruby
+h = Hash.new("nothing here")
+
+puts h
+# {}
+
+puts h["kitty"]
+# nothing here
+```
