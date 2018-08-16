@@ -1,3 +1,4 @@
+```java
 package Sort;
 
 import java.util.Random;
@@ -62,3 +63,4 @@ public class Sort11004_linearTime {
 		array[b] = tmp;
 	}
 }
+```
