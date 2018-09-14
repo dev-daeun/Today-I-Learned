@@ -1,0 +1,464 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Good\n"
+     ]
+    }
+   ],
+   "source": [
+    "is_holiday = True\n",
+    "result = 'Good' if is_holiday else 'Bad'\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Bad\n"
+     ]
+    }
+   ],
+   "source": [
+    "is_holiday = False\n",
+    "if is_holiday:\n",
+    "    result = 'Good'\n",
+    "else:\n",
+    "    result = 'Bad'\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Normal\n",
+      "Bad\n"
+     ]
+    }
+   ],
+   "source": [
+    "vacation = 5\n",
+    "if vacation >= 7:\n",
+    "    result = 'Good'\n",
+    "elif vacation >= 5:\n",
+    "    result = 'Normal'\n",
+    "else:\n",
+    "    result = 'Bad'\n",
+    "print(result)\n",
+    "\n",
+    "vacation = 4\n",
+    "if vacation >= 7:\n",
+    "    result = 'Good'\n",
+    "else:\n",
+    "    if vacation >= 5:\n",
+    "        result = 'Normal'\n",
+    "    else:\n",
+    "        result = 'Bad'\n",
+    "print(result)\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "('Lux', 'the Lady of Luminosity')\n",
+      "('Ahri', 'the Nine-Tailed Fox')\n",
+      "('Ezreal', 'the Prodigal Explorer')\n",
+      "('Teemo', 'the Swift Scout')\n"
+     ]
+    }
+   ],
+   "source": [
+    "champion_dict = {\n",
+    " 'Lux': 'the Lady of Luminosity',\n",
+    " 'Ahri': 'the Nine-Tailed Fox',\n",
+    " 'Ezreal': 'the Prodigal Explorer',\n",
+    " 'Teemo': 'the Swift Scout',\n",
+    "}\n",
+    "\n",
+    "for item in champion_dict.items():  # items()는 딕셔너리의 키,밸류를 튜플로 리턴\n",
+    "    print(item)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n",
+      "5\n",
+      "6\n",
+      "7\n",
+      "8\n",
+      "9\n"
+     ]
+    }
+   ],
+   "source": [
+    "sample = [\n",
+    "    [1,2,3],\n",
+    "    [4,5,6],\n",
+    "    [7,8,9]\n",
+    "]\n",
+    "for row in sample:\n",
+    "    for element in row:\n",
+    "        print(element)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "찾지못함\n",
+      "찾지못함\n"
+     ]
+    }
+   ],
+   "source": [
+    "find = 10\n",
+    "is_found = False\n",
+    "for row in sample:\n",
+    "    for element in row:\n",
+    "        if element == find:\n",
+    "            is_found = True\n",
+    "            break\n",
+    "    if is_found == True:\n",
+    "        break\n",
+    "if is_found :\n",
+    "    print('찾았음')\n",
+    "else:\n",
+    "    print('찾지못함')\n",
+    "    \n",
+    "\n",
+    "\n",
+    "for row in sample:  # for-else: for문에서 break가 한번도 실행되지 않으면 else문이 실행됨.\n",
+    "    if find in row:\n",
+    "        print('찾았음')\n",
+    "        break\n",
+    "else:\n",
+    "    print('찾지못함')\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "fruit:  apple  color:  red\n",
+      "fruit:  banana  color:  yellow\n",
+      "fruit:  melon  color:  green\n",
+      "fruit:  grape  color:  purple\n",
+      "--------------------------\n",
+      "0 apple\n",
+      "1 banana\n",
+      "2 melon\n",
+      "3 grape\n",
+      "4 plum\n",
+      "fruit:  apple color:  red\n",
+      "fruit:  banana color:  yellow\n",
+      "fruit:  melon color:  green\n",
+      "fruit:  grape color:  purple\n",
+      "red apple\n",
+      "yellow banana\n",
+      "green melon\n",
+      "purple grape\n"
+     ]
+    }
+   ],
+   "source": [
+    "fruits = ['apple', 'banana', 'melon', 'grape', 'plum']\n",
+    "colors = ['red', 'yellow', 'green', 'purple']\n",
+    "for fruit, color in zip(fruits, colors):\n",
+    "    print('fruit: ', fruit, ' color: ', color)\n",
+    "\n",
+    "print('--------------------------')\n",
+    "\n",
+    "for idx, element in enumerate(fruits):\n",
+    "    print(idx, element)\n",
+    "    \n",
+    "\n",
+    "li = fruits if len(fruits) <= len(colors) else colors\n",
+    "for idx, element in enumerate(li):\n",
+    "    if li == fruits:\n",
+    "        print('fruit: ', element, ' color: ', colors[idx])\n",
+    "    else:\n",
+    "        print('fruit: ', fruits[idx], 'color: ', element)\n",
+    "        \n",
+    "        \n",
+    "short, long = (colors, fruits) if len(colors) <= len(fruits) else (fruits, colors)\n",
+    "for idx, element in enumerate(short):\n",
+    "    print(element, long[idx])\n",
+    "    \n",
+    "\n",
+    "short = min([fruits, colors], key=len)  # key를 기준으로 리스트 내에 더 작은 값을 리턴.\n",
+    "print(short)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 45,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[False]\n",
+      "[2, 4]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 컴프리헨션 장점 : 빠르다, 코드가 짧다.\n",
+    "li = [item*2 in range(1, 6)]\n",
+    "print(li)\n",
+    "\n",
+    "# 컴프리헨션에서는 for문 뒤에 if문 올 수 있음.\n",
+    "li2 = [item for item in range(1, 6) if item % 2 == 0]\n",
+    "print(li2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 46,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('red', 'apple'),\n",
+       " ('red', 'banana'),\n",
+       " ('red', 'melon'),\n",
+       " ('red', 'grape'),\n",
+       " ('red', 'plum'),\n",
+       " ('yellow', 'apple'),\n",
+       " ('yellow', 'banana'),\n",
+       " ('yellow', 'melon'),\n",
+       " ('yellow', 'grape'),\n",
+       " ('yellow', 'plum'),\n",
+       " ('green', 'apple'),\n",
+       " ('green', 'banana'),\n",
+       " ('green', 'melon'),\n",
+       " ('green', 'grape'),\n",
+       " ('green', 'plum'),\n",
+       " ('purple', 'apple'),\n",
+       " ('purple', 'banana'),\n",
+       " ('purple', 'melon'),\n",
+       " ('purple', 'grape'),\n",
+       " ('purple', 'plum')]"
+      ]
+     },
+     "execution_count": 46,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "[(color, fruit)\n",
+    "    for color in colors\n",
+    "         for fruit in fruits\n",
+    "]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 86,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[(0, 0), (0, 1), (0, 2), (0, 3), (2, 0), (2, 1), (2, 2), (2, 3), (4, 0), (4, 1), (4, 2), (4, 3), (6, 0), (6, 1), (6, 2), (6, 3)]\n",
+      "750000\n",
+      "2단\n",
+      "2 x 1 = 2\n",
+      "2 x 2 = 4\n",
+      "2 x 3 = 6\n",
+      "2 x 4 = 8\n",
+      "2 x 5 = 10\n",
+      "2 x 6 = 12\n",
+      "2 x 7 = 14\n",
+      "2 x 8 = 16\n",
+      "2 x 9 = 18\n",
+      "3단\n",
+      "3 x 1 = 3\n",
+      "3 x 2 = 6\n",
+      "3 x 3 = 9\n",
+      "3 x 4 = 12\n",
+      "3 x 5 = 15\n",
+      "3 x 6 = 18\n",
+      "3 x 7 = 21\n",
+      "3 x 8 = 24\n",
+      "3 x 9 = 27\n",
+      "4단\n",
+      "4 x 1 = 4\n",
+      "4 x 2 = 8\n",
+      "4 x 3 = 12\n",
+      "4 x 4 = 16\n",
+      "4 x 5 = 20\n",
+      "4 x 6 = 24\n",
+      "4 x 7 = 28\n",
+      "4 x 8 = 32\n",
+      "4 x 9 = 36\n",
+      "5단\n",
+      "5 x 1 = 5\n",
+      "5 x 2 = 10\n",
+      "5 x 3 = 15\n",
+      "5 x 4 = 20\n",
+      "5 x 5 = 25\n",
+      "5 x 6 = 30\n",
+      "5 x 7 = 35\n",
+      "5 x 8 = 40\n",
+      "5 x 9 = 45\n",
+      "6단\n",
+      "6 x 1 = 6\n",
+      "6 x 2 = 12\n",
+      "6 x 3 = 18\n",
+      "6 x 4 = 24\n",
+      "6 x 5 = 30\n",
+      "6 x 6 = 36\n",
+      "6 x 7 = 42\n",
+      "6 x 8 = 48\n",
+      "6 x 9 = 54\n",
+      "7단\n",
+      "7 x 1 = 7\n",
+      "7 x 2 = 14\n",
+      "7 x 3 = 21\n",
+      "7 x 4 = 28\n",
+      "7 x 5 = 35\n",
+      "7 x 6 = 42\n",
+      "7 x 7 = 49\n",
+      "7 x 8 = 56\n",
+      "7 x 9 = 63\n",
+      "8단\n",
+      "8 x 1 = 8\n",
+      "8 x 2 = 16\n",
+      "8 x 3 = 24\n",
+      "8 x 4 = 32\n",
+      "8 x 5 = 40\n",
+      "8 x 6 = 48\n",
+      "8 x 7 = 56\n",
+      "8 x 8 = 64\n",
+      "8 x 9 = 72\n",
+      "9단\n",
+      "9 x 1 = 9\n",
+      "9 x 2 = 18\n",
+      "9 x 3 = 27\n",
+      "9 x 4 = 36\n",
+      "9 x 5 = 45\n",
+      "9 x 6 = 54\n",
+      "9 x 7 = 63\n",
+      "9 x 8 = 72\n",
+      "9 x 9 = 81\n",
+      "[7, 9, 14, 18, 21, 27, 28, 35, 36, 42, 45, 49, 54, 56, 63, 70, 72, 77, 81, 84, 90, 91, 98, 99]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 1. for문을 2개 중첩하여 (0,0), (0,1), (0,2), (0,3), (1,0), (1,1)..... (6,3)까지 출력되는 반복문을 구현한다.\n",
+    "# 2. 리스트 컴프리헨션을 중첩하여 위 결과를 갖는 리스트를 생성한다.\n",
+    "# 3. 1, 2번의 반복문에서 1번은 튜플의 첫 번째 항목이 짝수일때만 출력하도록, 2번은 첫 번째 항목이 짝수일때만 리스트의 원소로 추가한다.\n",
+    "# 4. 1000에서 2000까지의 숫자 중, 홀수의 합을 구해본다.\n",
+    "# 5. 리스트 컴프리헨션을 사용하여 구구단 결과를 갖는 리스트를 만들고, 해당 리스트를 for문을 사용해 구구단 형태로 나오도록 출력해본다. 각 단마다 한 번 더 줄바꿈을 넣어준다.\n",
+    "# 6. 1에서 99까지의 정수 중, 7의 배수이거나 9의 배수인 정수인 리스트를 생성한다. 단, 7의 배수이며 9의 배수인 수는 한 번만 추가되어야 한다.\n",
+    "\n",
+    "tup = [(num1, num2)  # 1~3번\n",
+    "    for num1 in range(7) if num1 % 2 == 0\n",
+    "        for num2 in range(4)]\n",
+    "print(tup)\n",
+    "\n",
+    "\n",
+    "# 4번\n",
+    "# 리스트의 엘리먼트들을 모두 더할 때는 sum함수.\n",
+    "total = sum([num for num in range(1001, 2001, 2)])\n",
+    "print(total)\n",
+    "\n",
+    "\n",
+    "gugudan = [  # 5번\n",
+    "        (n1, n2, n1 * n2)\n",
+    "        for n1 in range(2, 10)\n",
+    "            for n2 in range(1, 10)      \n",
+    "]\n",
+    "for idx, (n1, n2, result) in enumerate(gugudan):\n",
+    "    if idx % 9 == 0:\n",
+    "        print(f'{n1}단')\n",
+    "    print(f'{n1} x {n2} = {result}')  # 스트링 앞에 f붙이면 format() 안써도 됨.\n",
+    "   \n",
+    "\n",
+    "nums = [num for num in range(1, 100)  # 6번\n",
+    "         if num % 7 == 0 or num % 9 == 0]\n",
+    "print(nums)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
