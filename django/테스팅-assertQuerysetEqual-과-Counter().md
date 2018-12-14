@@ -91,5 +91,5 @@ Counter({
 })
 
 ```
-결국 서로 다른 key를 같는 딕셔너리를 비교하기 때문에 테스트에 실패하게 된 것이다. 테스트케이스가 통과되기 위해서는 `expected_posts`이 `Post`모델 객체 리스트가 아니라 `map(repr, [{title: '제목', author_name: 'kde6260', ...}, {...}])` 이 되어야 한다.
+결국 서로 다른 key를 같는 딕셔너리를 비교하기 때문에 테스트에 실패하게 된 것이다. 테스트케이스가 통과되기 위해서는 `expected_posts`이 `Post`모델 객체 리스트가 아니라 `map(repr, [{title: p1.title, author_name: p1.author.name, ...}, {...}])` 이 되어야 한다.
 
