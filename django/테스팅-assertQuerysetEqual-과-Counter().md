@@ -91,4 +91,5 @@ Counter({
 })
 
 ```
-결국 서로 다른 key를 같는 딕셔너리를 비교하기 때문에 테스트에 실패하게 된 것이다. 테스트케이스가 통과되기 위해서는 `expected_posts`에 `Post`모델 객체 리스트가 아니라 `title`, `content`, `author_name`을 key로 갖는 딕셔너리 리스트를 저장해야 한다. 
+결국 서로 다른 key를 같는 딕셔너리를 비교하기 때문에 테스트에 실패하게 된 것이다. 테스트케이스가 통과되기 위해서는 `expected_posts`이 `Post`모델 객체 리스트가 아니라 `map(repr, [{title: '제목', author_name: 'kde6260', ...}, {...}])` 이 되어야 한다.
+
