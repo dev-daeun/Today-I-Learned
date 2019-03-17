@@ -143,3 +143,10 @@ def update_bulk_with_auto_commit():
 ```
 `atomic`으로 쿼리들에 원자성을 부여했기 때문에 `content`를 `3`으로 수정했던 쿼리들은 모두 롤백되었으므로 `content`가 3 row는 . 
 하지만 `auto-commit`을 사용하는 상황애서는 예외가 발생하기 전 까지 커밋된 쿼리들이 있기 때문에 `content`가 3으로 수정된 row들이 있을 것이다. 
+
+## Idle in transaction
+위의 예제처럼 1만개의 row를 수정하는 쿼리를 `atomic`한 '트랜잭션 A'로 묶는다고 가정해보자.
+트랜잭션 A가 `question`테이블을 locking하여 점유하는 동안 row 1개만 삭제하는 '트랜잭션 B'는 트랜잭션 A의 lock이 풀릴때까지 대기해야 한다.
+이렇게 다른 트랜잭션의 lock이 풀릴 때까지 쿼리를 실행하지 못하고 idle 상태에 빠져있는 트랜잭션들이 늘어나면 DB커낵션 풀이 소진되고
+애플리케이션 서버의 응답시간에도 영향을 주게 된다. 따라서 트랜잭션의 단위는 최대한 작게 함으로써 idle in transaction이 발생할 가능성을 줄여야 한다.
+Django에서 `auto-commit`을 권장하는 게 아마 이런 이유 때문인 듯 하다.
