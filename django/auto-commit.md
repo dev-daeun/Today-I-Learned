@@ -28,10 +28,10 @@ def update_bulk_with_auto_commit(tog):
     start = datetime.now()
     questions = Question.objects.all()
     for qu in questions:
-        qu.content = 'question updated with atomic set.'
+        qu.content = f'question updated with auto-commit {tog}.'
         qu.save()
     end = datetime.now()
-    print(f'auto-commit is{tog}: ', end - start)
+    print(f'auto-commit is {tog}: ', end - start)
 ```
 
 1만개의 row를 수정하는 `update_bulk_with_auto_commit` 함수를 정의했다.
@@ -141,5 +141,5 @@ def update_bulk_with_auto_commit():
 (0.000) | release SAVEPOINT "s140735595205504_x1"
 
 ```
-`atomic`으로 쿼리들에 원자성을 부여했기 때문에 `content`를 `3`으로 수정했던 쿼리들은 모두 롤백되었으므로 `content`가 3 row는 존재하지 않게 된다. 
+`atomic`으로 쿼리들에 원자성을 부여했기 때문에 `content`를 `3`으로 수정했던 쿼리들은 모두 롤백되었으므로 `content`가 3 row는 . 
 하지만 `auto-commit`을 사용하는 상황애서는 예외가 발생하기 전 까지 커밋된 쿼리들이 있기 때문에 `content`가 3으로 수정된 row들이 있을 것이다. 
