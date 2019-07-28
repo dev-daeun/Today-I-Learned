@@ -16,10 +16,9 @@ class MyLinkedList(object):
             return ll
 
         p = self.head
-        while p.next_:
+        while p:
             ll.append(p.val)
             p = p.next_
-        ll.append(p.val)
         return ll
     
     @property
@@ -48,13 +47,11 @@ class MyLinkedList(object):
 
         idx = 0
         p = self.head
-        while p.next_:
+        while p:
             if idx == index:
                 return p.val
             p = p.next_
             idx += 1
-        if idx == index:
-            return p.val
         return -1
 
     def addAtHead(self, val):
@@ -100,12 +97,10 @@ class MyLinkedList(object):
             return
         if index <= 0:
             return self.addAtHead(val)
-        if index == self.length:
-            return self.addAtTail(val)
         new_node = Node(val)
         p = self.head
         idx = 0
-        while p.next_:
+        while p:
             prev_p = p
             p = p.next_
             if idx == index - 1:
@@ -131,7 +126,10 @@ class MyLinkedList(object):
             return
 
         idx = 0
-        while p.next_:
+        while p:
+            if not p.next_:
+                del p
+                return
             prev_p = p
             p = p.next_
             if idx == index - 1:
@@ -139,9 +137,6 @@ class MyLinkedList(object):
                 del p
                 return
             idx += 1
-
-        if idx == index - 1:
-            del p
         return
 
 
