@@ -8,6 +8,7 @@ class ListNode(object):
 class LinkedList(object):
     def __init__(self):
         self.head = None
+        self.tail = None
 
     def insert_head(self, node):
         if self.head:
@@ -17,11 +18,10 @@ class LinkedList(object):
     def add_at_tail(self, node):
         if not self.head:
             self.insert_head(node)
+            self.tail = self.head
             return
-        p = self.head
-        while p.next:
-            p = p.next
-        p.next = node
+        self.tail.next = node
+        self.tail = node
 
 
 class Solution(object):
