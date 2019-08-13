@@ -8,7 +8,6 @@ class ListNode:
 class LinkedList(object):
     def __init__(self):
         self.head = None
-        self.tail = None
 
     @property
     def empty(self):
@@ -39,28 +38,27 @@ class LinkedList(object):
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        share = 0
-        result = LinkedList()
-        
-        while l1 and l2:
-            sum_ = l1.val + l2.val
-            rest = int(sum_ % 10)
-            result.insert_tail(rest + share)
-            share = int(sum_ / 10)
-            l1 = l1.next
-            l2 = l2.next
+        n1 = n2 = 0
+        i = j = 0
 
         while l1:
-            result.insert_tail(l1.val + share)
+            n1 += l1.val * pow(10, i)
+            i += 1
             l1 = l1.next
-            share = 0
         
         while l2:
-            result.insert_tail(l2.val + share)
+            n2 += l2.val * pow(10, j)
+            j += 1
             l2 = l2.next
-            share = 0
+        
+        result = LinkedList()
+        sum_ = n1 + n2
+        while sum_ != 0:
+            result.insert_tail(int(sum_ % 10))
+            sum_ = int(sum_ / 10)
         
         return result
+
 
 def test1():
     l1 = LinkedList()
@@ -94,18 +92,64 @@ def test2():
 
 def test3():
     l1 = LinkedList()
+    l1.insert_tail(9)
     l1.insert_tail(8)
+
+    l2 = LinkedList()
+    l2.insert_tail(1)
+
+    s = Solution()
+    result = s.addTwoNumbers(l1.head, l2.head).ll_to_list()
+    print(result)
+    assert result == [0, 9]
+
+
+def test4():
+    l1 = LinkedList()
+    l1.insert_tail(9)
     l1.insert_tail(9)
 
     l2 = LinkedList()
     l2.insert_tail(1)
 
     s = Solution()
-    result = s.addTwoNumbers(l1.head, l2.head).ll_to_list() 
-    assert result == [0, 9]
+    result = s.addTwoNumbers(l1.head, l2.head).ll_to_list()
+    print(result)
+    assert result == [0, 0, 1]
 
+def test5():
+    l1 = LinkedList()
+    l1.insert_tail(0)
+
+    l2 = LinkedList()
+    l2.insert_tail(0)
+
+    s = Solution()
+    result = s.addTwoNumbers(l1.head, l2.head).ll_to_list()
+    print(result)
+    assert result == [0]
+
+def test6():
+    l1 = LinkedList()
+    l1.insert_tail(1)
+    for _ in range(29):
+        l1.insert_tail(0)
+    l1.insert_tail(1)
+
+    l2 = LinkedList()
+    l2.insert_tail(5)
+    l2.insert_tail(6)
+    l2.insert_tail(4)
+
+    s = Solution()
+    result = s.addTwoNumbers(l1.head, l2.head).ll_to_list()
+    print(result)
+    assert result == [6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
 
 if __name__ == '__main__':
     test1()
     test2()
     test3()
+    test4()
+    test5()
+    test6()
