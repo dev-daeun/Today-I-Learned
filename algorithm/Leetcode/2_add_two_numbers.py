@@ -53,10 +53,12 @@ class Solution:
         
         result = LinkedList()
         sum_ = n1 + n2
+        if sum_ == 0:
+            result.insert_tail(0)
+            return result
         while sum_ != 0:
             result.insert_tail(int(sum_ % 10))
-            sum_ = int(sum_ / 10)
-        
+            sum_ = sum_ // 10
         return result
 
 
