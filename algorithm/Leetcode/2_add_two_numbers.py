@@ -36,29 +36,28 @@ class LinkedList(object):
             print(p.val, end=' ')
             p = p.next
 
+
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        n1 = n2 = 0
-        i = j = 0
 
-        while l1:
-            n1 += l1.val * pow(10, i)
-            i += 1
-            l1 = l1.next
-        
-        while l2:
-            n2 += l2.val * pow(10, j)
-            j += 1
-            l2 = l2.next
-        
+        carry = 0
         result = LinkedList()
-        sum_ = n1 + n2
-        if sum_ == 0:
-            result.insert_tail(0)
-            return result
-        while sum_ != 0:
-            result.insert_tail(int(sum_ % 10))
-            sum_ = sum_ // 10
+
+        while l1 or l2:
+            n1 = l1.val if l1 else 0
+            n2 = l2.val if l2 else 0
+
+            sum_ = n1 + n2 + carry
+            carry = sum_ // 10
+            share = int(sum_ % 10)
+            result.insert_tail(share)
+
+            l1 = l1.next if l1 else None
+            l2 = l2.next if l2 else None
+
+        if carry == 1:
+            result.insert_tail(carry)
+
         return result
 
 
@@ -147,6 +146,7 @@ def test6():
     result = s.addTwoNumbers(l1.head, l2.head).ll_to_list()
     print(result)
     assert result == [6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]
+
 
 if __name__ == '__main__':
     test1()
